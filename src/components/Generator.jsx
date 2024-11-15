@@ -75,10 +75,10 @@ export default function Generator({
 								setPoison(type);
 							}}
 							className={
-								"bg-slate-950 border  duration-200 px-4 hover:border-white hover:bg-blue-800 hover:font-bold py-3 rounded-lg " +
+								" border  duration-200 px-4 hover:border-white hover:bg-blue-800 hover:font-bold py-3 rounded-lg " +
 								(type === poison
-									? "  font-bold bg-blue-800"
-									: " border-blue-600")
+									? "font-bold bg-blue-800 "
+									: " border-blue-600 bg-slate-950")
 							}
 							key={typeIndex}
 						>
@@ -99,7 +99,13 @@ export default function Generator({
 					className="relative p-3 flex items-center justify-center hover:border-white hover:font-bold rounded-lg hover:border-white hover:bg-blue-800 hover:font-bold"
 				>
 					<p className=" capitalize">
-						{muscles.length === 0 ? "Select muscle groups" : muscles.join(" ")}
+						{poison === "individual"
+							? muscles.length !== 3
+								? "Select three muscle groups"
+								: muscles.join(" ")
+							: muscles.length === 0
+								? "Select one muscle group"
+								: muscles.join(" ")}
 					</p>
 					<i className="fa-solid absolute right-3 top-1/2 -translate-y-1/2 fa-caret-down" />
 				</button>
@@ -117,7 +123,7 @@ export default function Generator({
 									className={
 										"hover:text-blue-400 hover:font-bold duration-200 items-center mx-auto justify-center hover:border-white " +
 										(muscles.includes(muscleGroup)
-											? "text-blue-400 font-bold"
+											? "text-blue-400 font-bold "
 											: "")
 									}
 								>
@@ -139,14 +145,15 @@ export default function Generator({
 				{Object.keys(SCHEMES).map((scheme, schemeIndex) => {
 					return (
 						<button
+							type="submit"
 							onClick={() => {
 								setGoal(scheme);
 							}}
 							className={
-								"bg-slate-950 border  duration-200 hover:border-white hover:bg-blue-800 hover:font-bold py-3 rounded-lg px-4 " +
+								"border  duration-200 hover:border-white hover:bg-blue-800 hover:font-bold py-3 rounded-lg px-4 " +
 								(scheme === goal
 									? " font-bold bg-blue-800"
-									: " border-blue-400")
+									: " border-blue-400 bg-slate-950 ")
 							}
 							key={schemeIndex}
 						>
@@ -155,7 +162,15 @@ export default function Generator({
 					);
 				})}
 			</div>
-			<Button func={updateWorkout} text={"Create Routine"}></Button>
+			<Button
+				func={updateWorkout}
+				text={
+					(muscles.length > 0 && poison !== "individual") ||
+					(muscles.length > 1 && poison === "individual")
+						? "Create Routine"
+						: "Waiting..."
+				}
+			/>
 		</SectionWrapper>
 	);
 }
