@@ -12,12 +12,12 @@ export default function Hero() {
 			</div>
 			<p className="text-sm md:text-base font-light">
 				Train hard.{" "}
-				<span className="text-blue-500 font-medium">Lift harder.</span> Become
+				<span className="text-blue-500 font-medium">Lift harder.</span> Be
 				unstoppable.
 			</p>
       <Button func={() => {
 				window.location.href ='#generate'
-			}} text="Start"/>
+			}} text="Let's Start"/>
 		</div>
 	);
 }

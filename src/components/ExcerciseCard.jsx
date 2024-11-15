@@ -2,17 +2,18 @@ import React, { useState, useEffect } from "react";
 
 export default function ExcerciseCard({ excercise, i, workout }) {
   const [setsCompleted, setSetsCompleted] = useState(0);
+  const [rngSets, setRngSets] = useState(0);
 
   useEffect(() => {
-    setSetsCompleted(0);
+    const randomSets = Math.round(Math.random() * 2 + 2);
+    setRngSets(randomSets);
+    setSetsCompleted(0); 
   }, [workout]);
-
+  
   function handleSetIncrement() {
-    if (setsCompleted === 5) {
-      return;
+    if (setsCompleted < rngSets) {
+      setSetsCompleted((prevSets) => prevSets + 1);
     }
-
-    setSetsCompleted((setsCompleted + 1) % 6);
   }
 
   return (
@@ -51,12 +52,12 @@ export default function ExcerciseCard({ excercise, i, workout }) {
             <p className="font-medium">{excercise[info]}</p>
           </div>
         ))}
-        <button
+        <button 
           onClick={handleSetIncrement}
-          className="flex flex-col p-2 rounded border-[1.5px] duration-200 border-solid border-blue-900 hover:border-blue-600 w-full duration-200"
+          className="  flex flex-col p-2 rounded border-[1.5px] duration-200 border-solid border-blue-900 w-full duration-200 hover:border-white hover:bg-blue-800 hover:font-bold rounded-lg"
         >
-          <h3 className="text-slate-400 text-sm capitalize">Sets Completed</h3>
-          <p className="font-medium">{setsCompleted}/5</p>
+          <h3 className="text-slate-400 text-sm capitalize text-white font-bold">Sets Completed</h3>
+          <p className="text-white font-bold">{setsCompleted}/{rngSets}</p>
         </button>
       </div>
     </div>

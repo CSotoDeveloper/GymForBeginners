@@ -19,12 +19,6 @@ export const SCHEMES = {
 }
 
 export const WORKOUTS = {
-    individual: ['biceps', 'triceps', 'chest', 'back', 'shoulders', 'quads', 'hamstrings', 'glutes', 'calves', 'abs'],
-    powerlifter_split: {
-        push: ['triceps', 'chest', 'shoulders'],
-        pull: ['back', 'shoulders', 'biceps'],
-        legs: ['glutes', 'calves', 'hamstrings', 'quads']
-    },
     bodybuilder_split: {
         chest: ['chest'],
         back: ['back'],
@@ -32,6 +26,12 @@ export const WORKOUTS = {
         legs: ['glutes', 'quads', 'hamstrings', 'calves'],
         arms: ['biceps', 'triceps'],
         abs: ['abs']
+    },
+    individual: ['biceps', 'triceps', 'chest', 'back', 'shoulders', 'quads', 'hamstrings', 'glutes', 'calves', 'abs'],
+    powerlifter_split: {
+        push: ['triceps', 'chest', 'shoulders'],
+        pull: ['back', 'shoulders', 'biceps'],
+        legs: ['glutes', 'calves', 'hamstrings', 'quads']
     },
     upper_lower: {
         upper: ['triceps', 'biceps', 'shoulders', 'chest', 'back'],

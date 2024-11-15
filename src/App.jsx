@@ -8,7 +8,7 @@ import { generateWorkout } from './utils/functions'
 
 function App() {
   const [workout, setWorkout] = useState(null)
-  const [poison, setPoison] = useState('individual')
+  const [poison, setPoison] = useState('bodybuilder_split')
   const [muscles, setMuscles] = useState([])
   const [goal, setGoal] = useState('strength_power')
   
